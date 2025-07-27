@@ -15,7 +15,7 @@ def retrieve_latest_bank_statement(file_path: str,new_columns:dict[str,str]=None
     :return: pandas DataFrame.
     """
     file_path = Path(file_path)
-    with open(file_path) as f:
+    with open(file_path,encoding="ISO-8859-1") as f:
         file_header = f.readline()
     print(file_header)
 
@@ -29,11 +29,11 @@ def retrieve_latest_bank_statement(file_path: str,new_columns:dict[str,str]=None
 
     return df
 
-def df_to_list_json(df: pd.DataFrame) -> List[Dict[str, Any]]:
+def df_to_list_json(df: pd.DataFrame,limit:int=None) -> List[Dict[str, Any]]:
     """Convert pandas dataframe to list of dicts.
 
     :param df: pandas dataframe.
-    :param columns: list of column names.
+    :param limit: limit the number of records.
     :return:
     """
-    return df.loc[:100,:].to_dict(orient="records")
+    return df.loc[:limit,:].to_dict(orient="records")

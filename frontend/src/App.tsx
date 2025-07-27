@@ -44,10 +44,8 @@ function App() {
             <h3 className="text-3xl font-bold underline pb-5">
                 Bank Statements
             </h3>
-
             <div className="relative overflow-x-auto">
                 <Table thead={headerKeys} tbody={tableTransactionsToShow}/>
-
                 {transactions.length >= 10 && (
                     <button
                         className="m-auto block mt-4 mb-5 text-white uppercase rounded text hover:bg-blue-700"
@@ -56,8 +54,11 @@ function App() {
                     </button>
                 )}
             </div>
-            <LineChartComponent transactions ={transactions} />
-            <BarChartComponent transactions ={transactions} />
+            <div className="flex">
+                <LineChartComponent transactions ={transactions} />
+                <BarChartComponent transactions ={transactions} />
+            </div>
+
         </>
 
     )

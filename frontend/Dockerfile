@@ -1,11 +1,12 @@
-#FROM ubuntu:latest
-#LABEL authors="asus"
-#
-#ENTRYPOINT ["top", "-b"]
+# syntax=docker/dockerfile:1
+FROM node:24-alpine
 
-# TODO need to
-   #install nvm
-   #install nodejs
-   #install (npm install: [tailwindcss, chart.js, react-chartjs-2, axios, react-router-dom])
+WORKDIR /frontend
 
-#
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy everything else
+COPY . .

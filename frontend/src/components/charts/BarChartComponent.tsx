@@ -39,20 +39,23 @@ const BarChartComponent = ({transactions}: { transactions: Array<Transaction> })
         datasets: [
             {
                 label: 'Expenses',
-                data: transactions.map((item) => item.amount < 0 ? item.amount : 0),
+                data: transactions.map((item) => item.amount < 0 ? item.amount : null),
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
             {
                 label: 'Income',
-                data: transactions.map((item) => item.amount > 0 ? item.amount : 0),
+                data: transactions.map((item) => item.amount > 0 ? item.amount : null),
                 borderColor: 'rgb(63,191,17)',
                 backgroundColor: 'rgba(63,191,17, 0.5)',
             }
         ],
     };
     return (
-        <Bar options={barOptions} data={data} />
+        <div className="flex-1/2">
+            <Bar options={barOptions} data={data} />
+        </div>
+
     );
 };
 
